@@ -1,0 +1,117 @@
+# Portfolio Deployment Workflow
+#
+# This is a GitHub Actions workflow file that will automatically deploy your portfolio
+# to GitHub Pages whenever you push changes to the main branch.
+#
+# INSTRUCTIONS FOR STUDENTS:
+# 1. This file starts as a commented template
+# 2. Uncomment the sections below step by step as you learn
+# 3. First, uncomment the basic workflow structure
+# 4. Then add the checkout step
+# 5. Finally, add the deployment steps
+# 6. Test each step to understand how CI/CD works!
+
+# STEP 1: Uncomment this basic workflow structure
+# name: Build & Deploy Portfolio
+#
+# on:
+#   push:
+#     branches: [ "main" ]
+#   pull_request:
+#     branches: [ "main" ]
+
+# STEP 2: Uncomment this basic job structure
+# jobs:
+#   build-deploy:
+#     runs-on: ubuntu-latest
+#
+#     steps:
+#       # This step checks out your code
+#       - name: Checkout Repository
+#         uses: actions/checkout@v4
+
+# STEP 3: Add Pages setup (uncomment when ready)
+#       - name: Setup Pages
+#         uses: actions/configure-pages@v5
+#         with:
+#           # You can specify custom settings here if needed
+#           # static_site_generator: none
+
+# STEP 4: Add artifact upload (uncomment when ready)
+#       - name: Upload artifact
+#         uses: actions/upload-pages-artifact@v3
+#         with:
+#           # Upload entire repository as static site
+#           path: './
+
+# STEP 5: Add deployment step (uncomment when ready)
+#       - name: Deploy to GitHub Pages
+#         id: deployment
+#         uses: actions/deploy-pages@v4
+
+# FULL WORKING EXAMPLE (uncomment this entire section when you're ready):
+#
+# name: Build & Deploy Portfolio
+#
+# on:
+#   push:
+#     branches: [ "main" ]
+#
+# permissions:
+#   contents: read
+#   pages: write
+#   id-token: write
+#
+# concurrency:
+#   group: "pages"
+#   cancel-in-progress: false
+#
+# jobs:
+#   build-deploy:
+#     environment:
+#       name: github-pages
+#       url: ${{ steps.deployment.outputs.page_url }}
+#     runs-on: ubuntu-latest
+#
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v4
+#
+#       - name: Setup Pages
+#         uses: actions/configure-pages@v5
+#
+#       - name: Upload artifact
+#         uses: actions/upload-pages-artifact@v3
+#         with:
+#           path: ./
+#
+#       - name: Deploy to GitHub Pages
+#         id: deployment
+#         uses: actions/deploy-pages@v4
+
+# 🎯 LEARNING GOALS:
+# After completing this workflow, you will understand:
+# ✅ How GitHub Actions workflows are structured
+# ✅ How to trigger workflows on git events (push, PR)
+# ✅ How to use pre-built actions from the marketplace
+# ✅ How to deploy static sites to GitHub Pages
+# ✅ How environment variables and secrets work
+# ✅ How to debug workflow failures
+
+# 💡 ADVANCED CHALLENGES:
+# Once you master the basics, try these:
+# 1. Add a step to run HTML validation
+# 2. Add a step to optimize images automatically
+# 3. Add a step to run accessibility checks
+# 4. Set up notifications on success/failure
+# 5. Add a step to cache dependencies for faster builds
+
+# 🔧 TROUBLESHOOTING TIPS:
+# - Check the Actions tab in your GitHub repository
+# - Make sure GitHub Pages is enabled in repository settings
+# - Ensure your repository is public (for free GitHub Pages)
+# - Check that the workflow file is in .github/workflows/
+# - Verify YAML syntax (indentation matters!)
+
+# Remember: This is your learning playground!
+# Don't be afraid to experiment and break things - that's how you learn! 🚀

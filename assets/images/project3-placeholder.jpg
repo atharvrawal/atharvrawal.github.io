@@ -1,0 +1,14 @@
+<svg width="400" height="250" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <rect x="50" y="40" width="300" height="150" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2" rx="8"/>
+  <rect x="70" y="60" width="60" height="40" fill="#3b82f6" rx="4"/>
+  <rect x="140" y="60" width="80" height="40" fill="#10b981" rx="4"/>
+  <rect x="230" y="60" width="70" height="40" fill="#f59e0b" rx="4"/>
+  <rect x="310" y="60" width="20" height="40" fill="#ef4444" rx="4"/>
+  <path d="M 70 120 L 120 110 L 170 130 L 220 100 L 270 115 L 320 90" stroke="#2563eb" stroke-width="3" fill="none"/>
+  <circle cx="120" cy="110" r="4" fill="#2563eb"/>
+  <circle cx="170" cy="130" r="4" fill="#2563eb"/>
+  <circle cx="220" cy="100" r="4" fill="#2563eb"/>
+  <circle cx="270" cy="115" r="4" fill="#2563eb"/>
+  <text x="200" y="235" font-family="Arial, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Data Visualization</text>
+</svg>
