@@ -73,16 +73,22 @@ document.querySelectorAll('.section').forEach(el => revealIo.observe(el));
 
 /* scrollspy nav — picks the last section whose top has passed the marker line,
    falling back to the final section once the page is scrolled to the bottom
-   (needed because short trailing sections never fill an IntersectionObserver band) */
+   (needed because short trailing sections never fill an IntersectionObserver band),
+   and hard-pinning "about" near the very top so the first link is active on load */
 const navLinks = document.querySelectorAll('.nav-link');
 const sections = Array.from(document.querySelectorAll('.section[id]'));
-const markerLine = window.innerHeight * 0.35;
+let markerLine = window.innerHeight * 0.35;
+window.addEventListener('resize', () => { markerLine = window.innerHeight * 0.35; });
 
 function setActive(id) {
   navLinks.forEach(l => l.classList.toggle('active', l.dataset.section === id));
 }
 
 function updateScrollspy() {
+  if (window.scrollY < 40) {
+    setActive(sections[0].id);
+    return;
+  }
   const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
   if (atBottom) {
     setActive(sections[sections.length - 1].id);
@@ -102,3 +108,8 @@ window.addEventListener('scroll', () => {
   requestAnimationFrame(() => { updateScrollspy(); ticking = false; });
 });
 updateScrollspy();
+
+/* instant feedback on click, ahead of the scroll finishing */
+navLinks.forEach(link => {
+  link.addEventListener('click', () => setActive(link.dataset.section));
+});
