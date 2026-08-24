@@ -1,3 +1,41 @@
+/* hero typewriter: types each phrase, holds, deletes, moves to the next */
+(function typewriter() {
+  const el = document.getElementById('hero-type-text');
+  if (!el) return;
+  const phrases = ['Async Runtimes', 'Distributed Systems', 'Cloud Infrastructure'];
+  const typeSpeed = 55;
+  const deleteSpeed = 30;
+  const holdTime = 1600;
+  const gapTime = 400;
+  let phraseIndex = 0;
+  let charIndex = 0;
+
+  function type() {
+    const phrase = phrases[phraseIndex];
+    if (charIndex <= phrase.length) {
+      el.textContent = phrase.slice(0, charIndex);
+      charIndex++;
+      setTimeout(type, typeSpeed);
+    } else {
+      setTimeout(erase, holdTime);
+    }
+  }
+
+  function erase() {
+    const phrase = phrases[phraseIndex];
+    if (charIndex > 0) {
+      charIndex--;
+      el.textContent = phrase.slice(0, charIndex);
+      setTimeout(erase, deleteSpeed);
+    } else {
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      setTimeout(type, gapTime);
+    }
+  }
+
+  type();
+})();
+
 /* mouse-reactive dot grid, single accent color */
 (function initGrid() {
   const canvas = document.getElementById('grid-canvas');
