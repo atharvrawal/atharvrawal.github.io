@@ -1,39 +1,65 @@
-/* hero typewriter: types each phrase, holds, deletes, moves to the next */
-(function typewriter() {
+/* hero scramble-morph: cycles phrases, each character resolving from
+   random noise into place at a slightly staggered offset (havoc.codes style) */
+(function scrambleCycle() {
   const el = document.getElementById('hero-type-text');
   if (!el) return;
   const phrases = ['Async Runtimes', 'Distributed Systems', 'Cloud Infrastructure'];
-  const typeSpeed = 55;
-  const deleteSpeed = 30;
-  const holdTime = 1600;
-  const gapTime = 400;
+  const chars = '!<>-_\\/[]{}—=+*^?#________';
+  const holdTime = 1800;
   let phraseIndex = 0;
-  let charIndex = 0;
+  let frameId = null;
 
-  function type() {
-    const phrase = phrases[phraseIndex];
-    if (charIndex <= phrase.length) {
-      el.textContent = phrase.slice(0, charIndex);
-      charIndex++;
-      setTimeout(type, typeSpeed);
-    } else {
-      setTimeout(erase, holdTime);
+  function scrambleTo(newText) {
+    const oldText = el.textContent;
+    const length = Math.max(oldText.length, newText.length);
+    const queue = [];
+    for (let i = 0; i < length; i++) {
+      const from = oldText[i] || '';
+      const to = newText[i] || '';
+      const start = Math.floor(Math.random() * 30);
+      const end = start + Math.floor(Math.random() * 30);
+      queue.push({ from, to, start, end, char: '' });
     }
+
+    let frame = 0;
+    return new Promise(resolve => {
+      cancelAnimationFrame(frameId);
+      function update() {
+        let output = '';
+        let complete = 0;
+        for (let i = 0; i < queue.length; i++) {
+          const q = queue[i];
+          if (frame >= q.end) {
+            complete++;
+            output += q.to;
+          } else if (frame >= q.start) {
+            if (!q.char || Math.random() < 0.3) q.char = chars[Math.floor(Math.random() * chars.length)];
+            output += `<span class="scramble-char">${q.char}</span>`;
+          } else {
+            output += q.from;
+          }
+        }
+        el.innerHTML = output;
+        if (complete === queue.length) {
+          resolve();
+        } else {
+          frame++;
+          frameId = requestAnimationFrame(update);
+        }
+      }
+      update();
+    });
   }
 
-  function erase() {
-    const phrase = phrases[phraseIndex];
-    if (charIndex > 0) {
-      charIndex--;
-      el.textContent = phrase.slice(0, charIndex);
-      setTimeout(erase, deleteSpeed);
-    } else {
+  async function cycle() {
+    while (true) {
+      await scrambleTo(phrases[phraseIndex]);
+      await new Promise(r => setTimeout(r, holdTime));
       phraseIndex = (phraseIndex + 1) % phrases.length;
-      setTimeout(type, gapTime);
     }
   }
 
-  type();
+  cycle();
 })();
 
 /* mouse-reactive dot grid, single accent color */
