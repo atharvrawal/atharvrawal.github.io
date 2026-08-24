@@ -1,21 +1,26 @@
-document.querySelectorAll('.section').forEach(el => el.classList.add('reveal'));
+document.querySelectorAll('.tile, .project-card').forEach((el, i) => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(16px)';
+  el.style.transition = `opacity .5s ease ${i * 0.04}s, transform .5s ease ${i * 0.04}s`;
+});
 
-const revealIo = new IntersectionObserver(entries => {
-  entries.forEach(e => e.isIntersecting && e.target.classList.add('in'));
-}, { threshold: 0.08 });
-document.querySelectorAll('.reveal').forEach(el => revealIo.observe(el));
-
-const navLinks = document.querySelectorAll('.nav-link');
-const sections = document.querySelectorAll('.section[id]');
-
-const spyIo = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    const link = document.querySelector(`.nav-link[data-section="${entry.target.id}"]`);
-    if (!link) return;
-    if (entry.isIntersecting) {
-      navLinks.forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+      io.unobserve(e.target);
     }
   });
-}, { rootMargin: '-40% 0px -55% 0px' });
-sections.forEach(sec => spyIo.observe(sec));
+}, { threshold: 0.1 });
+document.querySelectorAll('.tile, .project-card').forEach(el => io.observe(el));
+
+const blobs = document.querySelectorAll('.blob');
+window.addEventListener('mousemove', (e) => {
+  const x = (e.clientX / window.innerWidth - 0.5) * 2;
+  const y = (e.clientY / window.innerHeight - 0.5) * 2;
+  blobs.forEach((b, i) => {
+    const strength = (i + 1) * 8;
+    b.style.translate = `${x * strength}px ${y * strength}px`;
+  });
+});
