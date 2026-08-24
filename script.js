@@ -71,17 +71,34 @@ const revealIo = new IntersectionObserver(entries => {
 }, { threshold: 0.08 });
 document.querySelectorAll('.section').forEach(el => revealIo.observe(el));
 
-/* scrollspy nav */
+/* scrollspy nav — picks the last section whose top has passed the marker line,
+   falling back to the final section once the page is scrolled to the bottom
+   (needed because short trailing sections never fill an IntersectionObserver band) */
 const navLinks = document.querySelectorAll('.nav-link');
-const sections = document.querySelectorAll('.section[id]');
-const spyIo = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    const link = document.querySelector(`.nav-link[data-section="${entry.target.id}"]`);
-    if (!link) return;
-    if (entry.isIntersecting) {
-      navLinks.forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
-    }
-  });
-}, { rootMargin: '-40% 0px -55% 0px' });
-sections.forEach(sec => spyIo.observe(sec));
+const sections = Array.from(document.querySelectorAll('.section[id]'));
+const markerLine = window.innerHeight * 0.35;
+
+function setActive(id) {
+  navLinks.forEach(l => l.classList.toggle('active', l.dataset.section === id));
+}
+
+function updateScrollspy() {
+  const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+  if (atBottom) {
+    setActive(sections[sections.length - 1].id);
+    return;
+  }
+  let current = sections[0].id;
+  for (const sec of sections) {
+    if (sec.getBoundingClientRect().top <= markerLine) current = sec.id;
+  }
+  setActive(current);
+}
+
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(() => { updateScrollspy(); ticking = false; });
+});
+updateScrollspy();
