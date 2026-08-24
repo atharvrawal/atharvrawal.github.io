@@ -8,247 +8,159 @@
 <link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="bg-grid" aria-hidden="true"></div>
+<canvas id="grid-canvas" aria-hidden="true"></canvas>
 
-<header class="nav">
-  <a href="#top" class="nav-logo">atharv<span>@</span>rawal</a>
-  <nav class="nav-links">
-    <a href="#about">about</a>
-    <a href="#experience">experience</a>
-    <a href="#projects">projects</a>
-    <a href="#publication">research</a>
-    <a href="#contact">contact</a>
-  </nav>
-  <a class="btn btn-ghost nav-resume" href="Resume_Atharv_Rawal.pdf" target="_blank" rel="noopener">resume ↗</a>
-</header>
+<div class="wrap">
 
-<main id="top">
+  <header class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sidebar-top">
+        <h1 class="brand-name"><a href="#top">ATHARV<br>RAWAL</a></h1>
+        <p class="sidebar-tag">Backend &amp; Systems Engineer</p>
+      </div>
 
-  <section class="hero">
-    <p class="hero-kicker">$ whoami</p>
-    <h1 class="hero-title">Atharv Rawal</h1>
-    <p class="hero-role">Backend &amp; Systems Engineer <span class="dim">/</span> Cloud Infra</p>
-    <p class="hero-desc">
-      CS undergrad building the unglamorous parts that make software work under load —
-      async runtimes, network protocols, and infrastructure that doesn't fall over.
-      Comfortable in Rust and Python, close to the OS, closer to the wire.
-    </p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="https://github.com/atharvrawal" target="_blank" rel="noopener">GitHub</a>
-      <a class="btn btn-ghost" href="https://linkedin.com/in/atharv-rawal" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn btn-ghost" href="mailto:atharvrawal124@gmail.com">Email</a>
-    </div>
-    <div class="hero-stack">
-      <span>Rust</span><span>Tokio</span><span>Python</span><span>C++</span><span>AWS</span><span>Linux</span><span>TCP/IP</span><span>TLS</span>
-    </div>
-  </section>
+      <nav class="sidebar-nav" aria-label="In-page">
+        <ul>
+          <li><a href="#about" class="nav-link" data-section="about"><span class="nav-line"></span>About</a></li>
+          <li><a href="#experience" class="nav-link" data-section="experience"><span class="nav-line"></span>Experience</a></li>
+          <li><a href="#projects" class="nav-link" data-section="projects"><span class="nav-line"></span>Projects</a></li>
+          <li><a href="#research" class="nav-link" data-section="research"><span class="nav-line"></span>Research</a></li>
+          <li><a href="#contact" class="nav-link" data-section="contact"><span class="nav-line"></span>Contact</a></li>
+        </ul>
+      </nav>
 
-  <section id="about" class="section">
-    <h2 class="section-title"><span class="tag">01</span> about</h2>
-    <div class="about-grid">
-      <p class="about-text">
-        I'm a 4th-year Computer Science student at <strong>PES University, Bangalore</strong> (CGPA 8.2/10),
-        graduating in 2027. My focus sits below the application layer — async I/O, network protocols, container
-        internals, and distributed systems — with backend and cloud infrastructure as the throughline.
-        I've spent time on both sides of the stack: writing the servers, and writing the pipelines that test
-        and ship them.
-      </p>
-      <p class="about-text">
-        Outside of coursework, I co-authored a survey on hybrid LLM inference systems, published in TMLR —
-        an interest in how orchestration and systems thinking apply to AI infrastructure, not just traditional backends.
-      </p>
-      <div class="about-facts">
-        <div class="fact">
-          <span class="fact-label">Education</span>
-          <span class="fact-value">B.E. Computer Science, PES University · 2023–2027</span>
-        </div>
-        <div class="fact">
-          <span class="fact-label">Focus</span>
-          <span class="fact-value">Backend systems, async networking, cloud infrastructure</span>
-        </div>
-        <div class="fact">
-          <span class="fact-label">Base</span>
-          <span class="fact-value">Bangalore, India</span>
-        </div>
+      <div class="sidebar-bottom">
+        <a href="Resume_Atharv_Rawal.pdf" target="_blank" rel="noopener" class="resume-link">
+          <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6Zm7 1.5L18.5 9H14a1 1 0 0 1-1-1V3.5ZM8 13h8v1.5H8V13Zm0 3.5h8V18H8v-1.5ZM8 9.5h3V11H8V9.5Z"/></svg>
+          Resume
+        </a>
+        <ul class="social-list">
+          <li><a href="https://github.com/atharvrawal" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 .5C5.73.5.5 5.73.5 12c0 5.09 3.29 9.4 7.86 10.93.57.1.79-.25.79-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.15 0 1.55-.01 2.8-.01 3.18 0 .3.21.66.8.55A10.52 10.52 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5Z"/></svg>
+          </a></li>
+          <li><a href="https://linkedin.com/in/atharv-rawal" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+          </a></li>
+          <li><a href="mailto:atharvrawal124@gmail.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M2 5.5A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18.5v-13Zm2.2.3 7.55 6.2a.4.4 0 0 0 .5 0l7.55-6.2H4.2ZM20 7.3l-7.13 5.86a1.9 1.9 0 0 1-2.4 0L3.34 7.3v11.2c0 .1.08.2.2.2h16.28a.2.2 0 0 0 .2-.2V7.3Z"/></svg>
+          </a></li>
+        </ul>
       </div>
     </div>
-  </section>
+  </header>
 
-  <section id="experience" class="section">
-    <h2 class="section-title"><span class="tag">02</span> experience</h2>
-    <div class="timeline">
-      <article class="timeline-item">
-        <div class="timeline-meta">
-          <span class="timeline-date">Summer 2025</span>
-          <span class="timeline-stack">Rust · Tokio · Python · Linux</span>
-        </div>
-        <div class="timeline-body">
-          <h3>Systems Developer — PESU Innovation Lab</h3>
-          <p class="timeline-project">Project: <a href="https://github.com/pes-innovation-lab/PortMux" target="_blank" rel="noopener">PortMux</a></p>
+  <main class="content" id="top">
+
+    <section id="about" class="section hero-section">
+      <div class="hero-text">
+        <p class="eyebrow">// backend · systems · cloud</p>
+        <h2 class="hero-line">Backend engineer,</h2>
+        <p class="hero-subline">currently working on:</p>
+        <div class="hero-type"><span id="hero-type-text"></span></div>
+      </div>
+      <div class="fact-grid">
+        <div class="fact-card"><span class="fact-num">4th</span><span>Year CS student, PES University · Bangalore</span></div>
+        <div class="fact-card"><span class="fact-num">TMLR</span><span>Co-authored survey on hybrid LLM inference</span></div>
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <h3 class="section-heading"><span class="num">01.</span> Experience</h3>
+      <article class="exp-row">
+        <div class="exp-date">Summer<br>2025</div>
+        <div class="exp-body">
+          <h4>Systems Developer <span class="dim">@ PESU Innovation Lab</span></h4>
+          <p class="exp-project">Project: <a href="https://github.com/pes-innovation-lab/PortMux" target="_blank" rel="noopener">PortMux</a> — an async port multiplexer</p>
           <ul>
-            <li>Engineered an asynchronous, application-level port multiplexer in Rust (Tokio), routing multiple protocols over a single exposed port via non-blocking I/O.</li>
-            <li>Built a dynamic routing engine with first-packet inspection and YAML-driven configuration, supporting custom Python protocol handlers.</li>
-            <li>Load-tested with Locust to 10,000 concurrent connections, holding latency overhead to ~8% above a direct connection at peak.</li>
-            <li>Packaged as a systemd service and published to the Arch User Repository (AUR).</li>
+            <li>Routed multiple protocols through a single exposed port via non-blocking I/O in Rust (Tokio).</li>
+            <li>First-packet inspection + YAML-driven routing, with custom Python protocol handlers.</li>
+            <li>Held ~8% latency overhead at 10,000 concurrent connections under Locust load testing.</li>
+            <li>Shipped as a systemd service, published to the AUR.</li>
           </ul>
+          <div class="pill-row"><span>Rust</span><span>Tokio</span><span>Python</span><span>Linux</span></div>
         </div>
       </article>
-    </div>
-  </section>
+    </section>
 
-  <section id="projects" class="section">
-    <h2 class="section-title"><span class="tag">03</span> projects</h2>
-    <div class="project-grid">
+    <section id="projects" class="section">
+      <h3 class="section-heading"><span class="num">02.</span> Projects</h3>
+      <div class="project-grid">
 
-      <article class="project-card featured">
-        <div class="project-head">
-          <h3>Docksmith</h3>
+        <a href="https://github.com/verhambot/gpudedupe" target="_blank" rel="noopener" class="project-card">
+          <span class="project-lang">C++ / CUDA</span>
+          <h4>GpuDedupe</h4>
+          <p>Offloads SHA-256 hashing to the GPU while the CPU handles content-defined chunking — ~5x throughput over CPU-only dedup with byte-perfect restoration.</p>
+          <div class="pill-row"><span>CUDA</span><span>FastCDC</span><span>Lock-Free Ring Buffers</span></div>
+          <span class="card-arrow">↗</span>
+        </a>
+
+        <a href="https://github.com/atharvrawal/Docksmith" target="_blank" rel="noopener" class="project-card">
           <span class="project-lang">Rust</span>
-        </div>
-        <p>A Docker-alternative container build &amp; runtime engine, built from scratch on raw Linux primitives —
-          no Docker, no runc, no containerd. Implements a Dockerfile-like build syntax, content-addressed layer
-          caching keyed on instruction + file hashes, and process isolation via <code>unshare</code> + <code>chroot</code>,
-          with fully reproducible image digests.</p>
-        <div class="project-tags"><span>Linux Namespaces</span><span>Content-Addressed Storage</span><span>Build Caching</span></div>
-        <div class="project-links">
-          <a href="https://github.com/atharvrawal/Docksmith" target="_blank" rel="noopener">Source ↗</a>
-        </div>
-      </article>
+          <h4>Docksmith</h4>
+          <p>Docker-alternative container runtime built from raw Linux primitives — no Docker, no runc, no containerd.</p>
+          <div class="pill-row"><span>Linux Namespaces</span><span>Content-Addressed Storage</span><span>Build Caching</span></div>
+          <span class="card-arrow">↗</span>
+        </a>
 
-      <article class="project-card featured">
-        <div class="project-head">
-          <h3>P2P File Sharing System</h3>
+        <a href="https://github.com/atharvrawal/p2p_rust" target="_blank" rel="noopener" class="project-card">
           <span class="project-lang">Rust</span>
-        </div>
-        <p>Dual-stack (IPv4/IPv6) peer-to-peer file transfer system built on raw TCP streams with chunked
-          transfer for high-throughput streaming. An AWS-hosted signaling server handles NAT traversal and peer
-          discovery; transport is secured with TLS and SHA-256 checksum validation end-to-end.</p>
-        <div class="project-tags"><span>TCP/IP</span><span>AWS</span><span>TLS</span><span>NAT Traversal</span></div>
-        <div class="project-links">
-          <a href="https://github.com/atharvrawal/p2p_rust" target="_blank" rel="noopener">Source ↗</a>
-        </div>
-      </article>
+          <h4>P2P File Sharing</h4>
+          <p>Dual-stack P2P transfer over raw TCP, NAT traversal via an AWS signaling server, TLS end-to-end.</p>
+          <div class="pill-row"><span>TCP/IP</span><span>AWS</span><span>TLS</span></div>
+          <span class="card-arrow">↗</span>
+        </a>
 
-      <article class="project-card">
-        <div class="project-head">
-          <h3>Automated CI/CD &amp; Testing Pipeline</h3>
-          <span class="project-lang">Python</span>
-        </div>
-        <p>A strict GitHub Actions pipeline that blocks PRs failing &gt;75% test coverage, Bandit security audits,
-          or PyLint thresholds. Includes a full unit/integration/E2E suite driven by Playwright, plus a custom
-          fuzzer that hammers API endpoints for DoS and SSRF vulnerabilities.</p>
-        <div class="project-tags"><span>GitHub Actions</span><span>Playwright</span><span>Fuzz Testing</span></div>
-        <div class="project-links">
-          <a href="https://github.com/atharvrawal" target="_blank" rel="noopener">Source ↗</a>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <div class="project-head">
-          <h3>wifi-tui</h3>
-          <span class="project-lang">Rust</span>
-        </div>
-        <p>A fast, keyboard-driven TUI WiFi manager for Linux built on <code>nmcli</code>, with vim-style
-          navigation (<code>ratatui</code> for rendering) and fully async, non-blocking network operations via
-          background threads and message passing.</p>
-        <div class="project-tags"><span>ratatui</span><span>NetworkManager</span><span>CLI Tooling</span></div>
-        <div class="project-links">
-          <a href="https://github.com/atharvrawal/wifi-tui" target="_blank" rel="noopener">Source ↗</a>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <div class="project-head">
-          <h3>Blockchain Energy Grid</h3>
-          <span class="project-lang">Python / Solidity</span>
-        </div>
-        <p>A backend-only prototype for peer-to-peer energy trading on a local Ethereum chain (Ganache).
-          Solidity contracts enforce role-based trading, atomic balance reversions, and a fixed settlement
-          rate, driven entirely through a Python + web3.py CLI.</p>
-        <div class="project-tags"><span>Solidity</span><span>web3.py</span><span>Smart Contracts</span></div>
-        <div class="project-links">
-          <a href="https://github.com/atharvrawal/Energy-Grid-System-Blockchain" target="_blank" rel="noopener">Source ↗</a>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <div class="project-head">
-          <h3>ScreenStream</h3>
+        <a href="https://github.com/atharvrawal/screen-stream" target="_blank" rel="noopener" class="project-card">
           <span class="project-lang">C++</span>
-        </div>
-        <p>Turns any device on a local network into a wireless second monitor — captures a Windows virtual
-          display, encodes it with GPU-accelerated H.264, and streams it over WebRTC straight to a browser.</p>
-        <div class="project-tags"><span>WebRTC</span><span>GPU Encoding</span><span>Virtual Display</span></div>
-        <div class="project-links">
-          <a href="https://github.com/atharvrawal/screen-stream" target="_blank" rel="noopener">Source ↗</a>
-        </div>
-      </article>
+          <h4>ScreenStream</h4>
+          <p>Turns a Windows monitor into a wireless second display — D3D11 capture, hardware H.264, delivered over WebRTC to any browser on the LAN.</p>
+          <div class="pill-row"><span>D3D11 Capture</span><span>WebRTC</span><span>Media Foundation</span></div>
+          <span class="card-arrow">↗</span>
+        </a>
 
+        <a href="https://github.com/atharvrawal/wifi-tui" target="_blank" rel="noopener" class="project-card">
+          <span class="project-lang">Rust</span>
+          <h4>wifi-tui</h4>
+          <p>Keyboard-driven TUI WiFi manager for Linux, fully async under the hood.</p>
+          <div class="pill-row"><span>ratatui</span><span>nmcli</span></div>
+          <span class="card-arrow">↗</span>
+        </a>
+
+        <a href="https://github.com/atharvrawal" target="_blank" rel="noopener" class="project-card card-more">
+          <span class="more-plus">+</span>
+          <span>More repos</span>
+        </a>
+
+      </div>
+    </section>
+
+    <div class="bottom-row">
+      <section id="research" class="section">
+        <h3 class="section-heading"><span class="num">03.</span> Research</h3>
+        <article class="pub-row">
+          <h4>A Survey of Hybrid Inference Systems for Large Language Models</h4>
+          <p class="pub-venue">TMLR, 2026 · Co-author</p>
+          <p>Speculative decoding, model routing, and hardware-aware inference — organized into a four-level
+            taxonomy that names the <em>"Orchestration Gap"</em> between inference latency and reasoning quality.</p>
+          <a href="https://openreview.net/forum?id=OIrJI53MvN" target="_blank" rel="noopener" class="inline-link">Read on OpenReview ↗</a>
+        </article>
+      </section>
+
+      <section id="contact" class="section contact-section">
+        <h3 class="section-heading"><span class="num">04.</span> Contact</h3>
+        <a href="mailto:atharvrawal124@gmail.com" class="contact-email">atharvrawal124@gmail.com</a>
+        <p class="contact-note">Open to backend, systems, and cloud roles &amp; internships.</p>
+      </section>
     </div>
-    <p class="more-projects">More on <a href="https://github.com/atharvrawal?tab=repositories" target="_blank" rel="noopener">github.com/atharvrawal →</a></p>
-  </section>
 
-  <section id="publication" class="section">
-    <h2 class="section-title"><span class="tag">04</span> research</h2>
-    <article class="pub-card">
-      <h3>A Survey of Hybrid Inference Systems for Large Language Models</h3>
-      <p class="pub-venue">TMLR, 2026 · Co-author</p>
-      <p>A survey of hybrid LLM inference spanning speculative decoding, reasoning, model routing, and
-        multi-agent, hardware-aware inference. Introduces a four-level taxonomy — micro, macro, structural,
-        and physical orchestration — and identifies the <em>"Orchestration Gap"</em>: the lack of a unified
-        control layer to balance inference latency against reasoning quality.</p>
-      <div class="project-links">
-        <a href="https://openreview.net/forum?id=OIrJI53MvN" target="_blank" rel="noopener">OpenReview ↗</a>
-      </div>
-    </article>
-  </section>
+  </main>
 
-  <section id="skills" class="section">
-    <h2 class="section-title"><span class="tag">05</span> skills</h2>
-    <div class="skills-grid">
-      <div class="skill-group">
-        <h4>Languages</h4>
-        <p>Rust, C++, Python, C, JavaScript, Bash</p>
-      </div>
-      <div class="skill-group">
-        <h4>Backend &amp; Systems</h4>
-        <p>Tokio, Async I/O, TCP/IP, TLS, Linux Internals, CI/CD, Fuzz Testing</p>
-      </div>
-      <div class="skill-group">
-        <h4>Cloud &amp; Tools</h4>
-        <p>AWS, Arch Linux, Git, GitHub Actions, MongoDB, SQL</p>
-      </div>
-      <div class="skill-group">
-        <h4>Core CS</h4>
-        <p>Data Structures &amp; Algorithms, Operating Systems, Computer Networks, OOP</p>
-      </div>
-      <div class="skill-group">
-        <h4>AI Infrastructure</h4>
-        <p>LLM Inference Optimization, Speculative Decoding, MoE Architectures</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="section contact">
-    <h2 class="section-title"><span class="tag">06</span> contact</h2>
-    <p class="contact-text">Open to backend, systems, and cloud infrastructure roles &amp; internships.</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="mailto:atharvrawal124@gmail.com">atharvrawal124@gmail.com</a>
-      <a class="btn btn-ghost" href="https://github.com/atharvrawal" target="_blank" rel="noopener">GitHub</a>
-      <a class="btn btn-ghost" href="https://linkedin.com/in/atharv-rawal" target="_blank" rel="noopener">LinkedIn</a>
-    </div>
-  </section>
-
-</main>
-
-<footer class="footer">
-  <p>Built with plain HTML/CSS/JS · <a href="https://github.com/atharvrawal/atharvrawal.github.io" target="_blank" rel="noopener">source</a></p>
-</footer>
+</div>
 
 <script src="script.js"></script>
 </body>
