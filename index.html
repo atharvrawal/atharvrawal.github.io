@@ -3,120 +3,194 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Atharv Rawal</title>
+<title>Atharv Rawal — Backend & Systems Engineer</title>
 <meta name="description" content="Atharv Rawal — backend, systems, and cloud engineer. Rust, async I/O, distributed systems, CI/CD.">
 <link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Space+Mono:wght@400;700&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="noise"></div>
-<canvas id="grid-canvas"></canvas>
-<div class="cursor"></div>
-<div class="progress-bar" id="progress"></div>
+<div class="wrap">
 
-<nav class="navbar">
-  <div class="brand hover-target hidden" data-text="ATHARV">ATHARV</div>
-  <ul class="nav-links">
-    <li class="nav-item hover-target active" data-index="0">Intro</li>
-    <li class="nav-item hover-target" data-index="1">My Work</li>
-    <li class="nav-item hover-target" data-index="2">About</li>
-    <li class="nav-item hover-target" data-index="3">Contact</li>
-    <li><a href="Resume_Atharv_Rawal.pdf" target="_blank" class="resume-btn hover-target">[ RESUME ]</a></li>
-  </ul>
-</nav>
-
-<div class="viewport">
-
-  <section class="active" id="sec-0">
-    <div class="hero-wrapper">
-      <div class="hero-square"></div>
-      <h1 class="hero-main-title" data-text="ATHARV.">ATHARV<span class="accent">.</span></h1>
-      <div class="hero-role-container">
-        <span class="hero-role-label">:: CURRENTLY BUILDING ::</span>
-        <div class="hero-role" id="scramble-text">INITIALIZING...</div>
-      </div>
-    </div>
-    <div class="hero-status-minimal hover-target" id="scroll-down-btn">
-      <div class="scroll-arrow"></div>
-    </div>
-  </section>
-
-  <section id="sec-1">
-    <div class="work-container">
-      <div class="work-list">
-        <a href="https://github.com/atharvrawal/Docksmith" target="_blank" class="work-item active-project hover-target" data-img="1" data-title="Container Runtime From Scratch" data-desc="A Docker-alternative container build and runtime engine written entirely in Rust on raw Linux primitives — no Docker, no runc, no containerd. Implements a Dockerfile-like build syntax, content-addressed layer caching, and process isolation via unshare + chroot, with fully reproducible image digests.">
-          Docksmith <span>Rust • Linux Namespaces • Container Runtime</span>
-        </a>
-        <a href="https://github.com/atharvrawal/p2p_rust" target="_blank" class="work-item hover-target" data-img="2" data-title="Dual-Stack P2P Transfer" data-desc="A dual-stack (IPv4/IPv6) peer-to-peer file transfer system on raw TCP streams with chunked transfer for high-throughput streaming. An AWS-hosted signaling server handles NAT traversal and peer discovery, secured end-to-end with TLS and SHA-256 checksums.">
-          P2P File Sharing <span>Rust • AWS • TLS • TCP</span>
-        </a>
-        <a href="https://github.com/pes-innovation-lab/PortMux" target="_blank" class="work-item hover-target" data-img="3" data-title="Async Port Multiplexer" data-desc="An asynchronous, application-level port multiplexer in Rust (Tokio) routing multiple protocols over one exposed port via non-blocking I/O. First-packet inspection and YAML-driven config support custom Python protocol handlers — load-tested to 10,000 concurrent connections.">
-          PortMux <span>Rust • Tokio • YAML Routing</span>
-        </a>
-        <a href="https://github.com/atharvrawal" target="_blank" class="work-item hover-target" data-img="4" data-title="Zero-Trust CI/CD Pipeline" data-desc="A strict GitHub Actions pipeline blocking PRs failing coverage, Bandit security audits, or PyLint thresholds. Includes a full unit/integration/E2E suite driven by Playwright, plus a custom fuzzer hammering API endpoints for DoS and SSRF vulnerabilities.">
-          CI/CD Pipeline <span>Python • GitHub Actions • Fuzzing</span>
-        </a>
-        <a href="https://github.com/atharvrawal/wifi-tui" target="_blank" class="work-item hover-target" data-img="5" data-title="TUI Network Manager" data-desc="A fast, keyboard-driven TUI WiFi manager for Linux built on nmcli, with vim-style navigation and fully async, non-blocking network operations via background threads and message passing.">
-          wifi-tui <span>Rust • ratatui • nmcli</span>
-        </a>
-        <a href="https://github.com/atharvrawal" target="_blank" class="work-item hover-target other-repos">
-          // View other repos -&gt;
-        </a>
+  <header class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sidebar-top">
+        <h1><a href="#top">Atharv Rawal</a></h1>
+        <h2>Backend &amp; Systems Engineer</h2>
+        <p class="sidebar-blurb">
+          4th-year CS student building async runtimes, network protocols, and
+          the infrastructure underneath them. Currently exploring container
+          internals and LLM inference systems.
+        </p>
       </div>
 
-      <div class="work-preview has-active">
-        <img src="https://placehold.co/600x400/111/ebff00?text=Docksmith" class="active" id="img-1" alt="Docksmith">
-        <img src="https://placehold.co/600x400/111/ebff00?text=P2P+Transfer" id="img-2" alt="P2P File Sharing">
-        <img src="https://placehold.co/600x400/111/ebff00?text=PortMux" id="img-3" alt="PortMux">
-        <img src="https://placehold.co/600x400/111/ebff00?text=CI%2FCD" id="img-4" alt="CI/CD Pipeline">
-        <img src="https://placehold.co/600x400/111/ebff00?text=wifi-tui" id="img-5" alt="wifi-tui">
-        <div class="project-desc-overlay" id="project-overlay">
-          <h3 id="overlay-title">Docksmith</h3>
-          <p id="overlay-desc">A Docker-alternative container build and runtime engine written entirely in Rust on raw Linux primitives.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+      <nav class="sidebar-nav" aria-label="In-page">
+        <ul>
+          <li><a href="#about" class="nav-link" data-section="about"><span class="nav-line"></span><span>About</span></a></li>
+          <li><a href="#experience" class="nav-link" data-section="experience"><span class="nav-line"></span><span>Experience</span></a></li>
+          <li><a href="#projects" class="nav-link" data-section="projects"><span class="nav-line"></span><span>Projects</span></a></li>
+          <li><a href="#research" class="nav-link" data-section="research"><span class="nav-line"></span><span>Research</span></a></li>
+          <li><a href="#contact" class="nav-link" data-section="contact"><span class="nav-line"></span><span>Contact</span></a></li>
+        </ul>
+      </nav>
 
-  <section id="sec-2">
-    <div>
-      <p class="big-p">
-        I'm a 4th-year Computer Science student specializing in <span class="highlight">backend systems</span> and <span class="highlight">cloud infrastructure</span>.
-        <br><br>
-        My focus sits below the application layer — async runtimes, network protocols, and container internals. I also co-authored a survey on hybrid LLM inference systems, published in TMLR.
-      </p>
-      <div class="stats-grid">
-        <div class="stat">
-          <h3>Backend</h3><p>Rust &amp; Async I/O</p>
-        </div>
-        <div class="stat">
-          <h3>Systems</h3><p>Linux Internals &amp; Networking</p>
-        </div>
-        <div class="stat">
-          <h3>Cloud</h3><p>AWS &amp; CI/CD</p>
-        </div>
-        <div class="stat">
-          <h3>Research</h3><p>LLM Inference Systems</p>
-        </div>
+      <div class="sidebar-bottom">
+        <a href="Resume_Atharv_Rawal.pdf" target="_blank" rel="noopener" class="resume-link">Résumé <span aria-hidden="true">↗</span></a>
+        <ul class="social-list">
+          <li><a href="https://github.com/atharvrawal" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 .5C5.73.5.5 5.73.5 12c0 5.09 3.29 9.4 7.86 10.93.57.1.79-.25.79-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.15 0 1.55-.01 2.8-.01 3.18 0 .3.21.66.8.55A10.52 10.52 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5Z"/></svg>
+          </a></li>
+          <li><a href="https://linkedin.com/in/atharv-rawal" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+          </a></li>
+          <li><a href="mailto:atharvrawal124@gmail.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M2 5.5A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18.5v-13Zm2.2.3 7.55 6.2a.4.4 0 0 0 .5 0l7.55-6.2H4.2ZM20 7.3l-7.13 5.86a1.9 1.9 0 0 1-2.4 0L3.34 7.3v11.2c0 .1.08.2.2.2h16.28a.2.2 0 0 0 .2-.2V7.3Z"/></svg>
+          </a></li>
+        </ul>
       </div>
     </div>
-  </section>
+  </header>
 
-  <section id="sec-3">
-    <div style="text-align: center;">
-      <p style="margin-bottom: 2rem; color: var(--dim); text-transform: uppercase; letter-spacing: 2px;">Get In Touch</p>
-      <a href="mailto:atharvrawal124@gmail.com" class="contact-email hover-target">atharvrawal124@gmail.com</a>
-      <div class="socials">
-        <a href="https://github.com/atharvrawal" target="_blank" class="social-link hover-target">Github</a>
-        <a href="https://linkedin.com/in/atharv-rawal" target="_blank" class="social-link hover-target">LinkedIn</a>
-        <a href="mailto:atharvrawal124@gmail.com" class="social-link hover-target">Email</a>
+  <main class="content" id="top">
+
+    <section id="about" class="section">
+      <h3 class="section-heading"><span class="num">01.</span> About</h3>
+      <div class="section-body">
+        <p>
+          I'm a 4th-year Computer Science student at <strong>PES University, Bangalore</strong>
+          (CGPA 8.2/10), graduating in 2027. My focus sits below the application layer —
+          async I/O, network protocols, container internals, and distributed systems —
+          with backend and cloud infrastructure as the throughline.
+        </p>
+        <p>
+          Currently building small systems tools in Rust and thinking about orchestration
+          in LLM inference pipelines. Previously spent a summer at PES's innovation lab
+          shipping an async port multiplexer that held up under real load.
+        </p>
+        <p>
+          Outside of coursework I co-authored <a href="https://openreview.net/forum?id=OIrJI53MvN" target="_blank" rel="noopener">a survey on hybrid LLM inference</a>,
+          published in TMLR — systems thinking applied to AI infrastructure, not just
+          traditional backends.
+        </p>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <section id="experience" class="section">
+      <h3 class="section-heading"><span class="num">02.</span> Experience</h3>
+      <div class="timeline">
+        <article class="timeline-row">
+          <div class="timeline-date">Summer<br>2025</div>
+          <div class="timeline-content">
+            <h4>Systems Developer <span class="at">@ PESU Innovation Lab</span></h4>
+            <p class="timeline-project">Project: <a href="https://github.com/pes-innovation-lab/PortMux" target="_blank" rel="noopener">PortMux</a></p>
+            <ul>
+              <li>Engineered an asynchronous, application-level port multiplexer in Rust (Tokio), routing multiple protocols over a single exposed port via non-blocking I/O.</li>
+              <li>Built a dynamic routing engine with first-packet inspection and YAML-driven configuration, supporting custom Python protocol handlers.</li>
+              <li>Load-tested with Locust to 10,000 concurrent connections, holding latency overhead to ~8% above a direct connection at peak.</li>
+              <li>Packaged as a systemd service and published to the Arch User Repository (AUR).</li>
+            </ul>
+            <div class="tag-row">
+              <span>Rust</span><span>Tokio</span><span>Python</span><span>Linux</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <h3 class="section-heading"><span class="num">03.</span> Projects</h3>
+      <div class="project-list">
+
+        <article class="project-row">
+          <div class="project-head">
+            <h4><a href="https://github.com/atharvrawal/Docksmith" target="_blank" rel="noopener">Docksmith</a></h4>
+            <span class="project-lang">Rust</span>
+          </div>
+          <p>A Docker-alternative container build &amp; runtime engine, built from scratch on raw Linux
+            primitives — no Docker, no runc, no containerd. Implements a Dockerfile-like build syntax,
+            content-addressed layer caching, and process isolation via <code>unshare</code> + <code>chroot</code>,
+            with fully reproducible image digests.</p>
+          <div class="tag-row"><span>Linux Namespaces</span><span>Content-Addressed Storage</span><span>Build Caching</span></div>
+        </article>
+
+        <article class="project-row">
+          <div class="project-head">
+            <h4><a href="https://github.com/atharvrawal/p2p_rust" target="_blank" rel="noopener">P2P File Sharing System</a></h4>
+            <span class="project-lang">Rust</span>
+          </div>
+          <p>Dual-stack (IPv4/IPv6) peer-to-peer file transfer on raw TCP streams with chunked transfer
+            for high-throughput streaming. An AWS-hosted signaling server handles NAT traversal and peer
+            discovery; transport is secured with TLS and SHA-256 checksums end-to-end.</p>
+          <div class="tag-row"><span>TCP/IP</span><span>AWS</span><span>TLS</span><span>NAT Traversal</span></div>
+        </article>
+
+        <article class="project-row">
+          <div class="project-head">
+            <h4><a href="https://github.com/atharvrawal" target="_blank" rel="noopener">Automated CI/CD &amp; Testing Pipeline</a></h4>
+            <span class="project-lang">Python</span>
+          </div>
+          <p>A strict GitHub Actions pipeline blocking PRs failing &gt;75% test coverage, Bandit security
+            audits, or PyLint thresholds. Full unit/integration/E2E suite driven by Playwright, plus a
+            custom fuzzer hammering API endpoints for DoS and SSRF vulnerabilities.</p>
+          <div class="tag-row"><span>GitHub Actions</span><span>Playwright</span><span>Fuzz Testing</span></div>
+        </article>
+
+        <article class="project-row">
+          <div class="project-head">
+            <h4><a href="https://github.com/atharvrawal/wifi-tui" target="_blank" rel="noopener">wifi-tui</a></h4>
+            <span class="project-lang">Rust</span>
+          </div>
+          <p>A fast, keyboard-driven TUI WiFi manager for Linux built on <code>nmcli</code>, with vim-style
+            navigation and fully async, non-blocking network operations via background threads and message
+            passing.</p>
+          <div class="tag-row"><span>ratatui</span><span>NetworkManager</span><span>CLI Tooling</span></div>
+        </article>
+
+        <article class="project-row">
+          <div class="project-head">
+            <h4><a href="https://github.com/atharvrawal/Energy-Grid-System-Blockchain" target="_blank" rel="noopener">Blockchain Energy Grid</a></h4>
+            <span class="project-lang">Python / Solidity</span>
+          </div>
+          <p>A backend-only prototype for peer-to-peer energy trading on a local Ethereum chain (Ganache).
+            Solidity contracts enforce role-based trading and atomic balance reversions, driven entirely
+            through a Python + web3.py CLI.</p>
+          <div class="tag-row"><span>Solidity</span><span>web3.py</span><span>Smart Contracts</span></div>
+        </article>
+
+      </div>
+      <p class="more-projects">More on <a href="https://github.com/atharvrawal?tab=repositories" target="_blank" rel="noopener">github.com/atharvrawal →</a></p>
+    </section>
+
+    <section id="research" class="section">
+      <h3 class="section-heading"><span class="num">04.</span> Research</h3>
+      <article class="pub-row">
+        <h4>A Survey of Hybrid Inference Systems for Large Language Models</h4>
+        <p class="pub-venue">TMLR, 2026 · Co-author</p>
+        <p>A survey of hybrid LLM inference spanning speculative decoding, reasoning, model routing, and
+          multi-agent, hardware-aware inference. Introduces a four-level taxonomy — micro, macro, structural,
+          and physical orchestration — and identifies the <em>"Orchestration Gap"</em>: the lack of a unified
+          control layer to balance inference latency against reasoning quality.</p>
+        <a href="https://openreview.net/forum?id=OIrJI53MvN" target="_blank" rel="noopener" class="inline-link">Read on OpenReview ↗</a>
+      </article>
+    </section>
+
+    <section id="contact" class="section">
+      <h3 class="section-heading"><span class="num">05.</span> Contact</h3>
+      <div class="section-body">
+        <p>Open to backend, systems, and cloud infrastructure roles &amp; internships. The fastest way
+          to reach me is email.</p>
+        <a href="mailto:atharvrawal124@gmail.com" class="contact-cta">atharvrawal124@gmail.com</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Built with plain HTML/CSS/JS, deployed on GitHub Pages.</p>
+    </footer>
+
+  </main>
 
 </div>
 
